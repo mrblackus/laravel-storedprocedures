@@ -1,4 +1,6 @@
-<?php namespace Mrblackus\LaravelStoredprocedures;
+<?php
+
+namespace Mrblackus\LaravelStoredprocedures;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -28,7 +30,11 @@ class LaravelStoredproceduresServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+        $this->app['command.generate-sp'] = $this->app->share(function($app)
+        {
+            return new GenerateSpCommand;
+        });
+        $this->commands('command.generate-sp');
 	}
 
 	/**
