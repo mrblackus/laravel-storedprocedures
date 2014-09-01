@@ -51,6 +51,9 @@ class Generator
     {
         $tables                 = $this->readTables();
         $this->storedProcedures = $this->readSP($tables);
+
+        $this->writeSPModels();
+        return count($this->storedProcedures);
     }
 
     /**
@@ -62,7 +65,7 @@ class Generator
 
         $query = $pdo->prepare("
         SELECT DISTINCT
-          table_name,
+          table_name
         FROM
           information_schema.tables
         WHERE
@@ -145,7 +148,7 @@ class Generator
         $saveDir = $this->modelSaveDir;
         foreach ($this->storedProcedures as $sp)
         {
-            $fileName = $sp->getName() . '.php';
+            $fileName = $sp->getClassName() . '.php';
 
             $file = fopen($saveDir . $fileName, "w");
             fwrite($file, $this->SP_ModelToString($sp));
@@ -177,11 +180,11 @@ class Generator
         if ($sp instanceof ScalarStoredProcedure)
         {
             $variables['objectHydratation'] = false;
-            $variables['fetchMode']         = 'PDO::FETCH_COLUMN';
+            $variables['fetchMode']         = '\PDO::FETCH_COLUMN';
         }
         else
         {
-            $variables['fetchMode']         = '';
+            $variables['fetchMode']         = '\PDO::FETCH_ASSOC';
             $variables['objectHydratation'] = true;
             /** @var $sp ISPReturnClass */
             $variables['targetClass'] = $sp->getReturnedClassName();

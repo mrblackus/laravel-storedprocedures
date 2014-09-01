@@ -55,7 +55,7 @@ abstract class StoredProcedure
     }
 
     /**
-     * @param \Diapazon\Generator\SPParameter[] $parameters
+     * @param SPParameter[] $parameters
      */
     public function setParameters($parameters)
     {
@@ -63,7 +63,7 @@ abstract class StoredProcedure
     }
 
     /**
-     * @return \Diapazon\Generator\SPParameter[]
+     * @return SPParameter[]
      */
     public function getParameters()
     {

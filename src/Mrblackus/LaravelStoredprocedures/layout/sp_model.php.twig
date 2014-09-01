@@ -1,8 +1,12 @@
 <?php
-class {{ className }}
-
+/**
+ * Class {{ className }}
+ *
+ * This is an auto-generated class.
+ * DO NOT EDIT IT ! It will be rewritten at next generation.
+ */
+class {{ className }} extends \Mrblackus\LaravelStoredprocedures\SPModel
 {
-
 {% if hasAttributes %}
 {% for att in attributes %}
   protected ${{ att.getName }};
@@ -23,13 +27,12 @@ class {{ className }}
    */
   public static function execute({{ executeProtoParams }})
   {
-    $pdo   = \Diapazon\Database\PDOS::getInstance();
+    $pdo   = \DB::connection()->getPdo();
     $query = $pdo->prepare('SELECT * FROM {{ name }}({{ executeParams }})');
 {% if (inParameters | length) > 0 %}
 
-    $driver = \Diapazon\Diapazon::getDBDriver();
 {% for p in inParameters %}
-    $driver::bindPDOValue($query, ':{{ p.getName }}', ${{ p.getName }});
+    self::bindPDOValue($query, ':{{ p.getName }}', ${{ p.getName }});
 {% endfor %}
 {% endif %}
 
@@ -49,12 +52,4 @@ class {{ className }}
 
     return $res;
   }
-{% if hasAttributes %}
-  public function _setDFEdited($DFEdited)
-  {
-  }
-  public function _setDFInserted($DFInserted)
-  {
-  }
-{% endif %}
 }
