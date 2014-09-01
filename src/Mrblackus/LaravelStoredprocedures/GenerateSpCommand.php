@@ -3,8 +3,6 @@
 namespace Mrblackus\LaravelStoredprocedures;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 
 class GenerateSpCommand extends Command
 {
@@ -45,11 +43,6 @@ class GenerateSpCommand extends Command
         $schema     = \Config::get('laravel-storedprocedures::schema');
         $model_path = app_path('models/');
 
-//        var_dump($schema);
-//        $this->info($schema);
-//
-//        $this->info($model_path);
-
         $generator = new Generator(\DB::connection()->getPdo(), $schema, $model_path);
         $nbSp      = $generator->run();
 
@@ -64,8 +57,7 @@ class GenerateSpCommand extends Command
      */
     protected function getArguments()
     {
-        return array(//			array('example', InputArgument::REQUIRED, 'An example argument.'),
-        );
+        return array();
     }
 
     /**
@@ -75,8 +67,7 @@ class GenerateSpCommand extends Command
      */
     protected function getOptions()
     {
-        return array(//			array('example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null),
-        );
+        return array();
     }
 
 }

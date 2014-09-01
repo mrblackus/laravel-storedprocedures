@@ -10,7 +10,6 @@ namespace Mrblackus\LaravelStoredprocedures;
 
 class ScalarStoredProcedure extends StoredProcedure
 {
-
     public function getCleanReturnType()
     {
         return 'array';

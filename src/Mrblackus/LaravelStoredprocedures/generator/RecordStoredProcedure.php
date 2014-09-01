@@ -10,7 +10,6 @@ namespace Mrblackus\LaravelStoredprocedures;
 
 class RecordStoredProcedure extends StoredProcedure implements ISPReturnClass
 {
-
     /**
      * @return string
      */
