@@ -1,0 +1,60 @@
+<?php
+class {{ className }}
+
+{
+
+{% if hasAttributes %}
+{% for att in attributes %}
+  protected ${{ att.getName }};
+
+  public function get{{ att.getName | capitalize }}()
+  {
+    return $this->{{ att.getName }};
+  }
+
+  public function set{{ att.getName | capitalize }}(${{ att.getName }})
+  {
+    $this->{{ att.getName }} = ${{ att.getName }};
+  }
+{% endfor %}
+{% endif %}
+  /**
+   * @return {{ returnType }}
+   */
+  public static function execute({{ executeProtoParams }})
+  {
+    $pdo   = \Diapazon\Database\PDOS::getInstance();
+    $query = $pdo->prepare('SELECT * FROM {{ name }}({{ executeParams }})');
+{% if (inParameters | length) > 0 %}
+
+    $driver = \Diapazon\Diapazon::getDBDriver();
+{% for p in inParameters %}
+    $driver::bindPDOValue($query, ':{{ p.getName }}', ${{ p.getName }});
+{% endfor %}
+{% endif %}
+
+    $query->execute();
+    $res = array();
+
+    foreach ($query->fetchAll({{ fetchMode }}) as $v)
+    {
+{% if objectHydratation %}
+      $object = new {{ targetClass }}();
+      self::hydrate($object, $v);
+      $res[] = $object;
+{% else %}
+      $res[] = $v;
+{% endif %}
+    }
+
+    return $res;
+  }
+{% if hasAttributes %}
+  public function _setDFEdited($DFEdited)
+  {
+  }
+  public function _setDFInserted($DFInserted)
+  {
+  }
+{% endif %}
+}

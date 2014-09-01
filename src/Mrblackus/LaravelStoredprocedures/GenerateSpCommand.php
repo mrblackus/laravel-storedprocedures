@@ -3,7 +3,6 @@
 namespace Mrblackus\LaravelStoredprocedures;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -42,7 +41,13 @@ class GenerateSpCommand extends Command {
 	{
         $this->info('Hello moto !');
 
-        
+        $schema = \Config::get('laravel-storedprocedures::schema');
+
+        var_dump($schema);
+
+        //$this->info($schema);
+
+        //$generator = new Generator(\DB::connection()->getPdo(), 'public', 'toto');
 	}
 
 	/**
