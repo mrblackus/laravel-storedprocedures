@@ -1,17 +1,27 @@
 # Laravel stored procedures
 This package allow you to work with PostgreSQL stored procedures with Laravel 4. It allows you to generate models to simply use your procedures in your PHP code.
 
-*It only works with PostgreSQL for now.*
-
 ## Installation
+
+### Package installation
+#### With Composer
 Require this package by adding following dependency on your composer.json
 ```javascript
 "mrblackus/laravel-storedprocedures": "dev-master"
 ```
+Then update composer with `composer update` or `composer install`.
 
-Update composer with `composer update` then add the ServiceProvider on app/config/app.php :
+#### With Laravel bundle
+If you do not want to use Composer, you can install it by using Laravel Bundle by typing this command
+```
+php artisan bundle:install StoredProcedure
+```
+### Registering service provider
+Once the package is installed, add the ServiceProvider in `providers` array on app/config/app.php :
 ```php
-'Mrblackus\LaravelStoredprocedures\LaravelStoredproceduresServiceProvider'
+'providers' => array(
+    'Mrblackus\LaravelStoredprocedures\LaravelStoredproceduresServiceProvider'
+);
 ```
 
 ## Usage
