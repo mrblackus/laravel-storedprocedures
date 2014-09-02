@@ -1,5 +1,7 @@
 # Laravel stored procedures
-*Only works with PostgreSQL for now.*
+This package allow you to work with PostgreSQL stored procedures with Laravel 4. It allows you to generate models to simply use your procedures in your PHP code.
+
+*It only works with PostgreSQL for now.*
 
 ## Installation
 Require this package by adding following dependency on your composer.json
