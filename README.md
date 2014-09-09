@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/mrblackus/laravel-storedprocedures.svg?branch=master)](https://travis-ci.org/mrblackus/laravel-storedprocedures)
 # Laravel stored procedures
 This package allow you to work with PostgreSQL stored procedures with Laravel 4. It allows you to generate models to simply use your procedures in your PHP code.
 
