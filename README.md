@@ -8,7 +8,7 @@ This package allow you to work with PostgreSQL stored procedures with Laravel 4.
 #### With Composer
 Require this package by adding following dependency on your composer.json
 ```javascript
-"mrblackus/laravel-storedprocedures": "dev-master"
+"mrblackus/laravel-storedprocedures": "0.1.*"
 ```
 Then update composer with `composer update` or `composer install`.
 
@@ -43,7 +43,7 @@ You can change the database schema to read and the directory where models for st
 ```php
 return array(
     'schema'         => 'public',
-    'model_save_dir' => 'app/stored_procedures'
+    'model_save_dir' => 'stored_procedures/'
 );
 ```
 

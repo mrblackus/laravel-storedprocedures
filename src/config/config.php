@@ -2,5 +2,5 @@
 
 return array(
     'schema'         => 'public',
-    'model_save_dir' => 'app/stored_procedures'
+    'model_save_dir' => 'stored_procedures/'
 );
