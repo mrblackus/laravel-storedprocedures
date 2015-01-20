@@ -41,7 +41,10 @@ class GenerateSpCommand extends Command
         $this->info('Reading stored procedures from database...');
 
         $schema     = \Config::get('laravel-storedprocedures::schema');
-        $model_path = app_path('models/');
+        $model_path = app_path(\Config::get('laravel-storedprocedures::model_save_dir'));
+
+        if (!file_exists($model_path))
+            mkdir($model_path);
 
         $generator = new Generator(\DB::connection()->getPdo(), $schema, $model_path);
         $nbSp      = $generator->run();

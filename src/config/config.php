@@ -1,6 +1,6 @@
 <?php
 
 return array(
-    'schema' => 'public',
+    'schema'         => 'public',
     'model_save_dir' => 'app/stored_procedures'
 );

@@ -30,8 +30,22 @@ You can generate model for your stored procedures (aka *functions*) by typing th
 ```
 php artisan generate-sp
 ```
-**Only stored procedure which name start with sp_ will have a model generated, other ones will be ignored.**
-Models will be written in app/models/ directory. **Do not edit these models !** They will be overwritten at next generation.
+**Only stored procedures which name start with ``sp_`` will have a model generated, other ones will be ignored.**
+Models will be written in app/store_procedures directory (or the one defined in configuration file). **Do not edit these models !** They will be overwritten at next generation.
+
+## Configuration
+You can override default configuration by publishing configuration file and editing it.
+```
+php artisan config:publish mrblackus/laravel-storedprocedures
+```
+You can change the database schema to read and the directory where models for stored procedures are written.
+
+```php
+return array(
+    'schema'         => 'public',
+    'model_save_dir' => 'app/stored_procedures'
+);
+```
 
 ## Models
 Generated models have an `execute()` methods that allow you to execute stored procedure and get result (if the procedure returns one) from it.
