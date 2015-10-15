@@ -83,3 +83,7 @@ $friend->getId();
 $friend->getUsername();
 $friend->getFacebookid();
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mrblackus/laravel-storedprocedures/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
